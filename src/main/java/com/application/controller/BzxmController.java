@@ -6,21 +6,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.application.entity.ErrorRepository;
+import com.application.entity.BzxmRepository;
 
 @Controller
-public class TestController {
+public class BzxmController {
+
 	@Autowired
-	private ErrorRepository errorRepository;
+	private BzxmRepository bzxmRepository;
 
-	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getError(Model model) {
-		model.addAttribute("error", errorRepository.findAll());
-		return "error";
-	}
-
-	@RequestMapping(value = "/ip")
-	public String getip() {
-		return "ip";
+		model.addAttribute("bzxm", bzxmRepository.findAll());
+		return "bzxm";
 	}
 }
