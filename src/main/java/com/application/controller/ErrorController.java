@@ -11,12 +11,10 @@ import com.application.entity.ErrorRepository;
 public class ErrorController {
 
 	@Autowired
-	private ErrorRepository jstZfbzDataErrorRepository;
+	private ErrorRepository errorRepository;
 
 	@RequestMapping("/")
 	public Error getError() {
-		Error jstZfbzDataError = new Error();
-		jstZfbzDataError = jstZfbzDataErrorRepository.findOne(15);
-		return jstZfbzDataError;
+		return errorRepository.findOne(15);
 	}
 }
