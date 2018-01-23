@@ -5,29 +5,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<table border="1">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>BZXMTYBH</th>
-					<th>XMBSM</th>
-					<th>XMMC</th>
-					<th>XMXZ</th>
-					<th>XZQH</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="b : ${bzxm}">
-					<td th:text="${b.id}" />
-					<td th:text="${b.bzxmtybh}" />
-					<td th:text="${b.xmbsm}" />
-					<td th:text="${b.xmmc}" />
-					<td th:text="${b.xmxz}" />
-					<td th:text="${b.xzqh}" />
-				</tr>
-			</tbody>
-		</table>
-	</div>
+<div>
+<table border="1">
+<thead>
+<tr>
+<th>ID</th>
+<th>BZXMTYBH</th>
+<th>XMBSM</th>
+<th>XMMC</th>
+<th>XMXZ</th>
+<th>XZQH</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="b : ${bzxm}">
+<td th:text="${b.id}" />
+<td th:text="${b.bzxmtybh}" />
+<td th:text="${b.xmbsm}" />
+<td th:text="${b.xmmc}" />
+<td th:text="${b.xmxz}" />
+<td th:text="${b.xzqh}" />
+</tr>
+</tbody>
+</table>
+</div>
 </body>
 </html>

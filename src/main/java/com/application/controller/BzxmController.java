@@ -14,7 +14,7 @@ public class BzxmController {
 	@Autowired
 	private BzxmRepository bzxmRepository;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/bzxm", method = RequestMethod.GET)
 	public String getError(Model model) {
 		model.addAttribute("bzxm", bzxmRepository.findAll());
 		return "bzxm";
