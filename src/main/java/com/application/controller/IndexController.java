@@ -13,6 +13,10 @@ public class IndexController {
 	public String index(Model model) {
 		JwsService service = new JwsService();
 		Jws jws = service.getJwsPort();
+
+		//
+		System.out.println("JwsService.getJwsPort().hashCode()" + jws.hashCode());
+
 		// keys模糊查询关键字
 		String arg0 = "*濮家新村*";
 
@@ -23,9 +27,17 @@ public class IndexController {
 		int arg1 = 0;
 
 		// rows返回数据条数
-		int arg2 = 30;
+		int arg2 = 1;
+		long start = System.nanoTime();
+		model.addAttribute("index", jws.getData(arg0, arg1, arg2));
+		long end = System.nanoTime();
+		System.out.println((end - start) + "纳秒");
+		System.out.println((end - start) / 1000000 + "毫秒");
+		System.out.println((end - start) / 1000000000 + "秒");
 
-		// model.addAttribute("index", jws.getData(arg0, arg1, arg2));
+		model.addAttribute("arg0", arg0);
+		model.addAttribute("arg1", arg1);
+		model.addAttribute("arg2", arg2);
 
 		return "index";
 	}
