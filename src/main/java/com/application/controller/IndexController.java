@@ -25,8 +25,8 @@ public class IndexController {
 		// rows返回数据条数
 		int arg2 = 30;
 
-		model.addAttribute("index", jws.getData(arg0, arg1, arg2));
-		
+		// model.addAttribute("index", jws.getData(arg0, arg1, arg2));
+
 		return "index";
 	}
 }
