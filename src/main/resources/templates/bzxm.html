@@ -14,6 +14,62 @@
 </head>
 <body>
 	<div class="container">
+		<ul class="pagination">
+			<!-- 上一页 -->
+			<li class="page-item"
+				th:classappend="${page.first ? 'disabled' : ''}"><a
+				class="page-link" th:href="@{${'/bzxm'}(page=${page.number} - 1)}">上一页</a></li>
+			<!-- first -->
+			<li class="page-item"
+				th:classappend="${(page.number + 1) eq 1 ? 'active' : ''}"><a
+				class="page-link" th:href="@{${'/bzxm'}(page=0)}" th:text="1"></a></li>
+			<!-- ------ -->
+			<li class="page-item"
+				th:each="n : ${#numbers.sequence(2,page.totalPages-1)}"
+				th:classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
+				class="page-link" th:href="@{${'/bzxm'}(page=${n} - 1)}"
+				th:text="${n}"></a></li>
+			<!-- ------ -->
+			<!-- last -->
+			<li class="page-item"
+				th:classappend="${page.number eq (page.totalPages - 1) ? 'active' : ''}"><a
+				class="page-link"
+				th:href="@{${'/bzxm'}(page=${page.totalPages} - 1)}"
+				th:text="${page.totalPages}"></a></li>
+			<!-- 下一页 -->
+			<li class="page-item" th:classappend="${page.last ? 'disabled' : ''}"><a
+				class="page-link" th:href="@{${'/bzxm'}(page=${page.number} + 1)}">下一页</a></li>
+			<!-- 共页 -->
+			<li class="page-item disabled"><a class="page-link"
+				th:text="|共${page.totalPages}页|"></a></li>
+		</ul>
+	</div>
+	<div class="container">
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>BZXMTYBH</th>
+					<th>XMBSM</th>
+					<th>XMMC</th>
+					<th>XMXZ</th>
+					<th>XZQH</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p : ${page}">
+					<td th:text="${p.id}" />
+					<td th:text="${p.bzxmtybh}" />
+					<td th:text="${p.xmbsm}" />
+					<td th:text="${p.xmmc}" />
+					<td th:text="${p.xmxz}" />
+					<td th:text="${p.xzqh}" />
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- 
+	<div class="container">
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
@@ -36,11 +92,12 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
-	<img src="IMG_20171215_165036.jpg" class="img-thumbnail"
-		alt="Cinque Terre">
+	</div> -->
+	<!-- <img src="IMG_20171215_165036.jpg" class="img-thumbnail"
+		alt="Cinque Terre"> -->
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script type="text/javascript"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
