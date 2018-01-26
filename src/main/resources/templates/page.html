@@ -37,14 +37,29 @@
 				data-th-text="Previous"></a></li>
 			<!-- Previous -->
 
-			<li class="page-item"><select class="form-control">
+			<li class="page-item">
+				<!-- page.first --> <select class="form-control"
+				data-th-if="${page.first}">
+					<option data-th-text="${page.number + 1}" selected></option>
+					<option
+						data-th-each="n : ${#numbers.sequence(page.number + 2, page.totalPages)}"
+						data-th-text="${n}"></option>
+			</select> <!-- page.first --> <!--  --> <select class="form-control"
+				data-th-if="${not page.first && not page.last}">
 					<option data-th-each="n : ${#numbers.sequence(1, page.number)}"
 						data-th-text="${n}"></option>
 					<option data-th-text="${page.number + 1}" selected></option>
 					<option
 						data-th-each="n : ${#numbers.sequence(page.number + 2, page.totalPages)}"
 						data-th-text="${n}"></option>
-			</select></li>
+			</select> <!--  --> <!-- page.last --> <select class="form-control"
+				data-th-if="${page.last}">
+					<option
+						data-th-each="n : ${#numbers.sequence(1, page.totalPages - 1)}"
+						data-th-text="${n}"></option>
+					<option data-th-text="${page.number + 1}" selected></option>
+			</select> <!-- page.last -->
+			</li>
 
 			<!-- Next -->
 			<li class="page-item"
