@@ -16,6 +16,8 @@
 	<!-- Comparators and Equality -->
 	<div class="container alert alert-success"
 		data-th-text="|gt (>), lt (<), ge (>=), le (<=), not (!). Also eq (==), neq/ne (!=).|"></div>
+	<!-- Comparators and Equality -->
+
 	<!-- Pagination -->
 	<div class="container">
 		<ul class="pagination">
@@ -24,56 +26,76 @@
 				data-th-classappend="${page.first ? 'disabled' : ''}"><a
 				class="page-link"
 				data-th-href="@{${'/bzxm'}(page=${page.number} - 1)}">上一页</a></li>
+			<!-- 上一页 -->
+
 			<!-- first -->
 			<li class="page-item"
-				data-th-classappend="${(page.number + 1) eq 1 ? 'active' : ''}"><a
+				data-th-classappend="${page.first ? 'active' : ''}"><a
 				class="page-link" data-th-href="@{${'/bzxm'}(page=0)}"
 				data-th-text="1"></a></li>
-			<!-- ------ -->
+			<!-- first -->
+
 			<!-- totalPages le 10 -->
 			<li class="page-item" data-th-if="${page.totalPages le 10}"
 				data-th-each="n : ${#numbers.sequence(2, page.totalPages - 1)}"
 				data-th-classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
 				class="page-link" data-th-href="@{${'/bzxm'}(page=${n} - 1)}"
 				data-th-text="${n}"></a></li>
-			<!-- ------ -->
+			<!-- totalPages le 10 -->
+
 			<!-- totalPages gt 10 -->
 			<li class="page-item" data-th-if="${page.totalPages gt 10}"
 				data-th-each="n : ${#numbers.sequence(2, 5)}"
 				data-th-classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
 				class="page-link" data-th-href="@{${'/bzxm'}(page=${n} - 1)}"
 				data-th-text="${n}"></a></li>
-			<li class="page-item disabled"><a class="page-link"
-				href="javascript:void(0);" data-th-text="..."></a></li>
+			<!-- totalPages gt 10 -->
+
+			<!-- ... -->
+			<li class="page-item disabled" data-th-if="${page.totalPages gt 10}"><a
+				class="page-link" href="javascript:void(0);" data-th-text="..."></a></li>
+			<!-- ... -->
+
 			<!-- (page.number + 1) gt 5 && page.number lt  (page.totalPages - 5) -->
 			<li class="page-item active"
 				data-th-if="${(page.number + 1) gt 5 && page.number lt  (page.totalPages - 5)}"><a
 				class="page-link" data-th-href="@{${'/bzxm'}(page=${page.number})}"
 				data-th-text="${page.number + 1}"></a></li>
+			<!-- (page.number + 1) gt 5 && page.number lt  (page.totalPages - 5) -->
+
+			<!-- ... -->
 			<li class="page-item disabled"
 				data-th-if="${(page.number + 1) gt 5 && page.number lt  (page.totalPages - 5)}"><a
 				class="page-link" href="javascript:void(0);" data-th-text="..."></a></li>
+			<!-- ... -->
+
 			<!-- totalPages gt 10 -->
 			<li class="page-item" data-th-if="${page.totalPages gt 10}"
 				data-th-each="n : ${#numbers.sequence(page.totalPages - 4, page.totalPages - 1)}"
 				data-th-classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
 				class="page-link" data-th-href="@{${'/bzxm'}(page=${n} - 1)}"
 				data-th-text="${n}"></a></li>
-			<!-- ------ -->
+			<!-- totalPages gt 10 -->
+
 			<!-- last -->
 			<li class="page-item"
-				data-th-classappend="${page.number eq (page.totalPages - 1) ? 'active' : ''}"><a
+				data-th-classappend="${page.last ? 'active' : ''}"><a
 				class="page-link"
 				data-th-href="@{${'/bzxm'}(page=${page.totalPages} - 1)}"
 				data-th-text="${page.totalPages}"></a></li>
+			<!-- last -->
+
 			<!-- 下一页 -->
 			<li class="page-item"
 				data-th-classappend="${page.last ? 'disabled' : ''}"><a
 				class="page-link"
 				data-th-href="@{${'/bzxm'}(page=${page.number} + 1)}">下一页</a></li>
+			<!-- 下一页 -->
+
 			<!-- 共页 -->
 			<li class="page-item disabled"><a class="page-link"
 				data-th-text="|共${page.totalPages}页|"></a></li>
+			<!-- 共页 -->
 		</ul>
 	</div>
 	<div class="container">

@@ -12,15 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.application.entity.BzxmRepository;
 
 @Controller
-public class BzxmController {
+public class PageController {
 
 	@Autowired
 	private BzxmRepository bzxmRepository;
 
-	@RequestMapping(value = "/bzxm", method = RequestMethod.GET)
+	@RequestMapping(value = "/page", method = RequestMethod.GET)
 	public String getError(Model model, Integer page) {
-
-		// model.addAttribute("bzxm", bzxmRepository.findAll());
 
 		page = null == page ? 0 : page;
 		int size = 10;
@@ -29,6 +27,6 @@ public class BzxmController {
 		Pageable pageable = new PageRequest(page, size, sort);
 		model.addAttribute("page", bzxmRepository.findAll(pageable));
 
-		return "bzxm";
+		return "page";
 	}
 }
