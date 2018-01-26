@@ -13,6 +13,10 @@
 <title>Hello, world!</title>
 </head>
 <body>
+	<!-- Comparators and Equality -->
+	<div class="container alert alert-success"
+		data-th-text="|gt (>), lt (<), ge (>=), le (<=), not (!). Also eq (==), neq/ne (!=).|"></div>
+	<!-- Pagination -->
 	<div class="container">
 		<ul class="pagination">
 			<!-- 上一页 -->
@@ -28,30 +32,31 @@
 			<!-- ------ -->
 			<!-- totalPages le 10 -->
 			<li class="page-item" data-th-if="${page.totalPages le 10}"
-				data-th-each="n : ${#numbers.sequence(2,page.totalPages-1)}"
+				data-th-each="n : ${#numbers.sequence(2, page.totalPages - 1)}"
 				data-th-classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
 				class="page-link" data-th-href="@{${'/bzxm'}(page=${n} - 1)}"
 				data-th-text="${n}"></a></li>
+			<!-- ------ -->
 			<!-- totalPages gt 10 -->
 			<li class="page-item" data-th-if="${page.totalPages gt 10}"
-				data-th-each="n : ${#numbers.sequence(2,5)}"
+				data-th-each="n : ${#numbers.sequence(2, 5)}"
 				data-th-classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
 				class="page-link" data-th-href="@{${'/bzxm'}(page=${n} - 1)}"
 				data-th-text="${n}"></a></li>
 			<li class="page-item disabled"><a class="page-link"
 				href="javascript:void(0);" data-th-text="..."></a></li>
-			<!-- page.number gt 4 && page.number lt  (page.totalPages - 4) -->
+			<!-- (page.number + 1) gt 5 && page.number lt  (page.totalPages - 5) -->
 			<li class="page-item active"
-				data-th-if="${page.number gt 4 && (page.number + 1) lt  (page.totalPages - 4)}"><a
+				data-th-if="${(page.number + 1) gt 5 && page.number lt  (page.totalPages - 5)}"><a
 				class="page-link"
 				data-th-href="@{${'/bzxm'}(page=${page.number} - 1)}"
 				data-th-text="${page.number + 1}"></a></li>
 			<li class="page-item disabled"
-				data-th-if="${page.number gt 4 && (page.number + 1) lt  (page.totalPages - 4)}"><a
+				data-th-if="${(page.number + 1) gt 5 && page.number lt  (page.totalPages - 5)}"><a
 				class="page-link" href="javascript:void(0);" data-th-text="..."></a></li>
 			<!-- totalPages gt 10 -->
 			<li class="page-item" data-th-if="${page.totalPages gt 10}"
-				data-th-each="n : ${#numbers.sequence(page.totalPages-4,page.totalPages-1)}"
+				data-th-each="n : ${#numbers.sequence(page.totalPages - 4, page.totalPages - 1)}"
 				data-th-classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
 				class="page-link" data-th-href="@{${'/bzxm'}(page=${n} - 1)}"
 				data-th-text="${n}"></a></li>
