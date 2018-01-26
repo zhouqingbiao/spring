@@ -48,8 +48,7 @@
 			<!-- (page.number + 1) gt 5 && page.number lt  (page.totalPages - 5) -->
 			<li class="page-item active"
 				data-th-if="${(page.number + 1) gt 5 && page.number lt  (page.totalPages - 5)}"><a
-				class="page-link"
-				data-th-href="@{${'/bzxm'}(page=${page.number} - 1)}"
+				class="page-link" data-th-href="@{${'/bzxm'}(page=${page.number})}"
 				data-th-text="${page.number + 1}"></a></li>
 			<li class="page-item disabled"
 				data-th-if="${(page.number + 1) gt 5 && page.number lt  (page.totalPages - 5)}"><a
