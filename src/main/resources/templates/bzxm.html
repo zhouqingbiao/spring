@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -17,31 +17,59 @@
 		<ul class="pagination">
 			<!-- 上一页 -->
 			<li class="page-item"
-				th:classappend="${page.first ? 'disabled' : ''}"><a
-				class="page-link" th:href="@{${'/bzxm'}(page=${page.number} - 1)}">上一页</a></li>
+				data-th-classappend="${page.first ? 'disabled' : ''}"><a
+				class="page-link"
+				data-th-href="@{${'/bzxm'}(page=${page.number} - 1)}">上一页</a></li>
 			<!-- first -->
 			<li class="page-item"
-				th:classappend="${(page.number + 1) eq 1 ? 'active' : ''}"><a
-				class="page-link" th:href="@{${'/bzxm'}(page=0)}" th:text="1"></a></li>
+				data-th-classappend="${(page.number + 1) eq 1 ? 'active' : ''}"><a
+				class="page-link" data-th-href="@{${'/bzxm'}(page=0)}"
+				data-th-text="1"></a></li>
 			<!-- ------ -->
-			<li class="page-item"
-				th:each="n : ${#numbers.sequence(2,page.totalPages-1)}"
-				th:classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
-				class="page-link" th:href="@{${'/bzxm'}(page=${n} - 1)}"
-				th:text="${n}"></a></li>
+			<!-- totalPages le 10 -->
+			<li class="page-item" data-th-if="${page.totalPages le 10}"
+				data-th-each="n : ${#numbers.sequence(2,page.totalPages-1)}"
+				data-th-classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
+				class="page-link" data-th-href="@{${'/bzxm'}(page=${n} - 1)}"
+				data-th-text="${n}"></a></li>
+			<!-- totalPages gt 10 -->
+			<li class="page-item" data-th-if="${page.totalPages gt 10}"
+				data-th-each="n : ${#numbers.sequence(2,5)}"
+				data-th-classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
+				class="page-link" data-th-href="@{${'/bzxm'}(page=${n} - 1)}"
+				data-th-text="${n}"></a></li>
+			<li class="page-item disabled"><a class="page-link"
+				href="javascript:void(0);" data-th-text="..."></a></li>
+			<!-- page.number gt 4 && page.number lt  (page.totalPages - 4) -->
+			<li class="page-item active"
+				data-th-if="${page.number gt 4 && (page.number + 1) lt  (page.totalPages - 4)}"><a
+				class="page-link"
+				data-th-href="@{${'/bzxm'}(page=${page.number} - 1)}"
+				data-th-text="${page.number + 1}"></a></li>
+			<li class="page-item disabled"
+				data-th-if="${page.number gt 4 && (page.number + 1) lt  (page.totalPages - 4)}"><a
+				class="page-link" href="javascript:void(0);" data-th-text="..."></a></li>
+			<!-- totalPages gt 10 -->
+			<li class="page-item" data-th-if="${page.totalPages gt 10}"
+				data-th-each="n : ${#numbers.sequence(page.totalPages-4,page.totalPages-1)}"
+				data-th-classappend="${(page.number + 1) eq n ? 'active' : ''}"><a
+				class="page-link" data-th-href="@{${'/bzxm'}(page=${n} - 1)}"
+				data-th-text="${n}"></a></li>
 			<!-- ------ -->
 			<!-- last -->
 			<li class="page-item"
-				th:classappend="${page.number eq (page.totalPages - 1) ? 'active' : ''}"><a
+				data-th-classappend="${page.number eq (page.totalPages - 1) ? 'active' : ''}"><a
 				class="page-link"
-				th:href="@{${'/bzxm'}(page=${page.totalPages} - 1)}"
-				th:text="${page.totalPages}"></a></li>
+				data-th-href="@{${'/bzxm'}(page=${page.totalPages} - 1)}"
+				data-th-text="${page.totalPages}"></a></li>
 			<!-- 下一页 -->
-			<li class="page-item" th:classappend="${page.last ? 'disabled' : ''}"><a
-				class="page-link" th:href="@{${'/bzxm'}(page=${page.number} + 1)}">下一页</a></li>
+			<li class="page-item"
+				data-th-classappend="${page.last ? 'disabled' : ''}"><a
+				class="page-link"
+				data-th-href="@{${'/bzxm'}(page=${page.number} + 1)}">下一页</a></li>
 			<!-- 共页 -->
 			<li class="page-item disabled"><a class="page-link"
-				th:text="|共${page.totalPages}页|"></a></li>
+				data-th-text="|共${page.totalPages}页|"></a></li>
 		</ul>
 	</div>
 	<div class="container">
@@ -57,13 +85,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="p : ${page}">
-					<td th:text="${p.id}" />
-					<td th:text="${p.bzxmtybh}" />
-					<td th:text="${p.xmbsm}" />
-					<td th:text="${p.xmmc}" />
-					<td th:text="${p.xmxz}" />
-					<td th:text="${p.xzqh}" />
+				<tr data-th-each="p : ${page}">
+					<td data-th-text="${p.id}" />
+					<td data-th-text="${p.bzxmtybh}" />
+					<td data-th-text="${p.xmbsm}" />
+					<td data-th-text="${p.xmmc}" />
+					<td data-th-text="${p.xmxz}" />
+					<td data-th-text="${p.xzqh}" />
 				</tr>
 			</tbody>
 		</table>
@@ -82,13 +110,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="b : ${bzxm}">
-					<td th:text="${b.id}" />
-					<td th:text="${b.bzxmtybh}" />
-					<td th:text="${b.xmbsm}" />
-					<td th:text="${b.xmmc}" />
-					<td th:text="${b.xmxz}" />
-					<td th:text="${b.xzqh}" />
+				<tr data-th-each="b : ${bzxm}">
+					<td data-th-text="${b.id}" />
+					<td data-th-text="${b.bzxmtybh}" />
+					<td data-th-text="${b.xmbsm}" />
+					<td data-th-text="${b.xmmc}" />
+					<td data-th-text="${b.xmxz}" />
+					<td data-th-text="${b.xzqh}" />
 				</tr>
 			</tbody>
 		</table>
