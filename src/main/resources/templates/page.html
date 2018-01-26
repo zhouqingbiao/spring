@@ -10,17 +10,51 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+<style type="text/css">
+table {
+	white-space: nowrap;
+}
+</style>
 <title>Hello, world!</title>
 </head>
 <body>
+	<div class="container">
+		<h1 class="display-1" align="center">ZhouQingBiao</h1>
+	</div>
+
 	<!-- Comparators and Equality -->
-	<div class="container alert alert-success"
+	<div class="container alert alert-success" align="center"
 		data-th-text="|gt (>), lt (<), ge (>=), le (<=), not (!). Also eq (==), neq/ne (!=).|"></div>
 	<!-- Comparators and Equality -->
 
+	<div class="container">
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>BZXMTYBH</th>
+					<th>XMBSM</th>
+					<th>XMMC</th>
+					<th>XMXZ</th>
+					<th>XZQH</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="p : ${page}">
+					<td data-th-text="${p.id}" />
+					<td data-th-text="${p.bzxmtybh}" />
+					<td data-th-text="${p.xmbsm}" />
+					<td data-th-text="${p.xmmc}" />
+					<td data-th-text="${p.xmxz}" />
+					<td data-th-text="${p.xzqh}" />
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 	<!-- Pagination -->
 	<div class="container">
-		<ul class="pagination">
+		<ul class="pagination float-right">
 			<!-- First -->
 			<li class="page-item"
 				data-th-classappend="${page.first ? 'disabled' : ''}"><a
@@ -87,30 +121,6 @@
 				data-th-text="|共${page.totalElements}条|"></a></li>
 		</ul>
 	</div>
-	<div class="container">
-		<table class="table table-striped table-bordered table-hover">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>BZXMTYBH</th>
-					<th>XMBSM</th>
-					<th>XMMC</th>
-					<th>XMXZ</th>
-					<th>XZQH</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr data-th-each="p : ${page}">
-					<td data-th-text="${p.id}" />
-					<td data-th-text="${p.bzxmtybh}" />
-					<td data-th-text="${p.xmbsm}" />
-					<td data-th-text="${p.xmmc}" />
-					<td data-th-text="${p.xmxz}" />
-					<td data-th-text="${p.xzqh}" />
-				</tr>
-			</tbody>
-		</table>
-	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script type="text/javascript"></script>
@@ -128,7 +138,7 @@
 	<script type="text/javascript">
 		$(function() {
 			$("select").change(function() {
-				location.href = "/page?page=" + ($(this).val() - 1);
+				window.location.href = "/page?page=" + ($(this).val() - 1);
 			});
 		});
 	</script>

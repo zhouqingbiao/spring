@@ -21,7 +21,7 @@ public class PageController {
 	public String getError(Model model, Integer page) {
 
 		page = null == page ? 0 : page;
-		int size = 10;
+		int size = 5;
 		Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "xzqh"), new Sort.Order(Sort.Direction.ASC, "xmmc"));
 
 		Pageable pageable = new PageRequest(page, size, sort);
