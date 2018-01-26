@@ -21,6 +21,35 @@ table {
 	<div class="container">
 		<h1 class="display-1" align="center">ZhouQingBiao</h1>
 	</div>
+	<div class="container-fluid">
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<!-- Brand -->
+			<a class="navbar-brand" href="javascript:void(0);"></a>
+
+			<!-- Links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="/">RestController</a></li>
+				<li class="nav-item"><a class="nav-link" href="/bzxm">bzxm</a></li>
+				<li class="nav-item"><a class="nav-link" href="/index">index</a></li>
+
+				<!-- Dropdown -->
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="javascript:void(0);"
+					id="navbardrop" data-toggle="dropdown"> Dropdown link </a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/">RestController</a> <a
+							class="dropdown-item" href="/bzxm">bzxm</a> <a
+							class="dropdown-item" href="/index">index</a>
+					</div></li>
+			</ul>
+			<form class="form-inline" action="/page" method="get">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search"
+					name="page">
+				<button class="btn btn-success" type="submit">Search</button>
+			</form>
+		</nav>
+		<br>
+	</div>
 
 	<!-- Comparators and Equality -->
 	<div class="container alert alert-success" align="center"
