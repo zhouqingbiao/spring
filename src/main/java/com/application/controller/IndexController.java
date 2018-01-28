@@ -3,14 +3,16 @@ package com.application.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jws.Jws;
 import com.jws.JwsService;
 
 @Controller
 public class IndexController {
-	@RequestMapping("/index")
+	@RequestMapping(value = "/index", method = { RequestMethod.GET })
 	public String indexController(Model model) {
+
 		JwsService service = new JwsService();
 		Jws jws = service.getJwsPort();
 

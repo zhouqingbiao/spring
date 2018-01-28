@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.application.entity.BzxmRepository;
 
@@ -16,7 +17,7 @@ public class BzxmController {
 	@Autowired
 	private BzxmRepository bzxmRepository;
 
-	@RequestMapping(value = "/bzxm")
+	@RequestMapping(value = "/bzxm", method = { RequestMethod.GET })
 	public String bzxmController(Model model, Integer page) {
 
 		page = null == page ? 0 : page;

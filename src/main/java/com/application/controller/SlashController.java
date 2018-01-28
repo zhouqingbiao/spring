@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.application.entity.BzxmRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -17,7 +18,7 @@ public class SlashController {
 	@Autowired
 	private BzxmRepository bzxmRepository;
 
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/", method = { RequestMethod.GET })
 	public String Controller(Model model) {
 
 		int page = 0;

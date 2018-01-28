@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.application.entity.BzxmRepository;
 
@@ -16,8 +17,18 @@ public class PageController {
 	@Autowired
 	private BzxmRepository bzxmRepository;
 
-	@RequestMapping(value = "/page")
-	public String pageController(Model model, Integer page) {
+	@RequestMapping(value = "/page", method = { RequestMethod.GET, RequestMethod.POST })
+	public String pageController(Model model, Integer page, String email, String password) {
+
+		if (null == email && password == null) {
+
+		} else if (email.equals("") || password.equals("")) {
+			return "index";
+		} else if (email.equals("zhouqingbiao@qq.com") && password.equals("zhouqingbiao")) {
+
+		} else {
+			return "index";
+		}
 
 		page = null == page ? 0 : page;
 		int size = 5;
