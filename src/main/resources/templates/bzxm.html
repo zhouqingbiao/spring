@@ -22,7 +22,7 @@
 
 	<!-- Pagination -->
 	<div class="container">
-		<ul class="pagination">
+		<ul class="pagination float-right">
 			<!-- 上一页 -->
 			<li class="page-item"
 				data-th-classappend="${page.first ? 'disabled' : ''}"><a
@@ -124,33 +124,7 @@
 			</tbody>
 		</table>
 	</div>
-	<!-- 
-	<div class="container">
-		<table class="table table-striped table-bordered table-hover">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>BZXMTYBH</th>
-					<th>XMBSM</th>
-					<th>XMMC</th>
-					<th>XMXZ</th>
-					<th>XZQH</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr data-th-each="b : ${bzxm}">
-					<td data-th-text="${b.id}" />
-					<td data-th-text="${b.bzxmtybh}" />
-					<td data-th-text="${b.xmbsm}" />
-					<td data-th-text="${b.xmmc}" />
-					<td data-th-text="${b.xmxz}" />
-					<td data-th-text="${b.xzqh}" />
-				</tr>
-			</tbody>
-		</table>
-	</div> -->
-	<!-- <img src="IMG_20171215_165036.jpg" class="img-thumbnail"
-		alt="Cinque Terre"> -->
+	<div data-th-replace="footer :: html"></div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script type="text/javascript"></script>
