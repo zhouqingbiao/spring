@@ -10,7 +10,7 @@ import com.jws.JwsService;
 @Controller
 public class IndexController {
 	@RequestMapping("/index")
-	public String index(Model model) {
+	public String indexController(Model model) {
 		JwsService service = new JwsService();
 		Jws jws = service.getJwsPort();
 

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<body data-th-fragment="navbar">
+	<div class="container" align="center" hidden="">
+		<div class="col">
+			<img alt="" src="logo.jpg">
+		</div>
+		<div class="col" hidden="">
+			<h1 class="display-1" align="center">ZhouQingBiao</h1>
+		</div>
+	</div>
+	<!-- Navbar -->
+	<div class="container">
+		<nav class="navbar navbar-expand navbar-light bg-light">
+			<a class="navbar-brand" href="/"><img src="logo.png" height="250"
+				width="250"></a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" href="/bzxm">Bzxm</a></li>
+					<li class="nav-item"><a class="nav-link" href="/index">Index</a></li>
+					<li class="nav-item"><a class="nav-link" href="/page">Page</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="javascript:void(0);"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Dropdown </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="/bzxm">Bzxm</a> <a
+								class="dropdown-item" href="/index">Index</a> <a
+								class="dropdown-item" href="/page">Page</a>
+						</div></li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0" action="/">
+					<input class="form-control mr-sm-2" type="search"
+						placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
+				</form>
+			</div>
+		</nav>
+	</div>
+</body>
+</html>

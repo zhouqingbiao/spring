@@ -7,7 +7,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.application.entity.BzxmRepository;
 
@@ -17,8 +16,8 @@ public class PageController {
 	@Autowired
 	private BzxmRepository bzxmRepository;
 
-	@RequestMapping(value = "/page", method = RequestMethod.GET)
-	public String getError(Model model, Integer page) {
+	@RequestMapping(value = "/page")
+	public String pageController(Model model, Integer page) {
 
 		page = null == page ? 0 : page;
 		int size = 5;
