@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.application.entity.BzxmRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.redis.Redis;
+
+import redis.clients.jedis.Jedis;
 
 @Controller
 public class SlashController {
@@ -20,6 +23,16 @@ public class SlashController {
 
 	@RequestMapping(value = "/", method = { RequestMethod.GET })
 	public String Controller(Model model) {
+
+		try (Jedis jedis = Redis.Pool.getResource()) {
+
+			for (String s : jedis.keys("*濮家新村*")) {
+				System.out.println(s);
+			}
+
+		}
+
+		// Redis.Pool.close();
 
 		int page = 0;
 		int size = 5;
