@@ -23,10 +23,17 @@ public class PageController {
 		if (null == email && password == null) {
 
 		} else if (email.equals("") || password.equals("")) {
+			if (email.equals("")) {
+				model.addAttribute("email", "Email cannot be empty.");
+			}
+			if (password.equals("")) {
+				model.addAttribute("password", "Password cannot be empty.");
+			}
 			return "index";
 		} else if (email.equals("zhouqingbiao@qq.com") && password.equals("zhouqingbiao")) {
 
 		} else {
+			model.addAttribute("danger", "Incorrect username or password.");
 			return "index";
 		}
 
