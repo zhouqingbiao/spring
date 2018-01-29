@@ -52,7 +52,7 @@ table {
 
 	<!-- Pagination -->
 	<div class="container">
-		<ul class="pagination">
+		<ul class="pagination float-right">
 			<!-- First -->
 			<li class="page-item"
 				data-th-classappend="${page.first ? 'disabled' : ''}"><a
@@ -119,7 +119,6 @@ table {
 				data-th-text="|共${page.totalElements}条|"></a></li>
 		</ul>
 	</div>
-	<div data-th-replace="footer :: html"></div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script type="text/javascript"></script>
