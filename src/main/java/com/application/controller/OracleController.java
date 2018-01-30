@@ -9,8 +9,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class OracleController {
 
 	@RequestMapping(value = "/oracle", method = { RequestMethod.GET })
-	public String bzxmController(Model model) {
+	public String bzxmController(Model model, Integer page) {
+		page = null == page ? 0 : page;
 
-		return "oracle";
+		String oracle = "oracle";
+
+		switch (page) {
+		case 1:
+			oracle = "oracle/html/ssbkj";
+			break;
+
+		default:
+			break;
+		}
+
+		return oracle;
 	}
 }

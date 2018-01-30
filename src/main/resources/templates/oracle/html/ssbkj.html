@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<title>Oracle收缩表空间</title>
+<body>
+	<div data-th-replace="navbar :: html"></div>
+
+	<div class="container">
+		<h1 class="display-4 text-center">Oracle收缩表空间</h1>
+		<p class="lead">当表空间太满的时候我们会需要用到收缩表空间。</p>
+		<p class="text-primary">1.首先查看下表空间使用情况</p>
+		<!-- Trigger -->
+		<button class="btn btn-outline-secondary btn-sm float-right"
+			data-clipboard-target="#code1">copy</button>
+		<p>
+			<!-- Target -->
+			<code class="text-success" id="code1">SELECT
+				A.TABLESPACE_NAME, A.BYTES / 1024 / 1024 TOTAL_MB, (A.BYTES -
+				B.BYTES) / 1024 / 1024 USED_MB, B.BYTES / 1024 / 1024 FREE_MB,
+				ROUND(((A.BYTES - B.BYTES) / A.BYTES) * 100, 2) || '%' PERCENT_USED
+				FROM (SELECT TABLESPACE_NAME, SUM(BYTES) BYTES FROM DBA_DATA_FILES
+				GROUP BY TABLESPACE_NAME) A, (SELECT TABLESPACE_NAME, SUM(BYTES)
+				BYTES, MAX(BYTES) LARGEST FROM DBA_FREE_SPACE GROUP BY
+				TABLESPACE_NAME) B WHERE A.TABLESPACE_NAME = B.TABLESPACE_NAME ORDER
+				BY ((A.BYTES - B.BYTES) / A.BYTES) DESC;</code>
+		</p>
+		<div align="center">
+			<img alt="ssbkj1.jpg" src="oracle/img/ssbkj1.jpg">
+		</div>
+
+		<p class="text-primary">2.回收表空间数据文件</p>
+		<button class="btn btn-outline-secondary btn-sm float-right"
+			data-clipboard-target="#code2">copy</button>
+		<p>
+			<!-- Target -->
+			<code class="text-success" id="code2">SELECT 'ALTER DATABASE
+				DATAFILE ''' || A.FILE_NAME || ''' RESIZE ' || ROUND(A.FILESIZE -
+				(A.FILESIZE - C.HWMSIZE - 100) * 0.8) || 'M' SQL_CONEXT, A.FILESIZE,
+				C.HWMSIZE FROM (SELECT FILE_ID, FILE_NAME, ROUND(BYTES / 1024 /
+				1024) FILESIZE FROM DBA_DATA_FILES) A, (SELECT FILE_ID,
+				ROUND(MAX(BLOCK_ID) * 8 / 1024) HWMSIZE FROM DBA_EXTENTS GROUP BY
+				FILE_ID) C WHERE A.FILE_ID = C.FILE_ID AND A.FILESIZE - C.HWMSIZE >
+				100;</code>
+		</p>
+		<div align="center">
+			<img alt="ssbkj2.jpg" src="oracle/img/ssbkj2.jpg">
+		</div>
+
+		<p class="text-primary">3.写存储过程自动回收表空间</p>
+		<button class="btn btn-outline-secondary btn-sm float-right"
+			data-clipboard-target="#code3">copy</button>
+		<p>
+			<!-- Target -->
+			<code class="text-success" id="code3">CREATE OR REPLACE
+				PROCEDURE SSBKJ IS TN VARCHAR2(222); TM VARCHAR2(222); UM
+				VARCHAR2(222); FM VARCHAR2(222); PU VARCHAR2(222); BEGIN
+				/*查看表空间的使用情况*/ SELECT A.TABLESPACE_NAME, A.BYTES / 1024 / 1024
+				"TOTAL_MB", (A.BYTES - B.BYTES) / 1024 / 1024 "USED_MB", B.BYTES /
+				1024 / 1024 "FREE_MB", ROUND(((A.BYTES - B.BYTES) / A.BYTES) * 100,
+				2) "PERCENT_USED" INTO TN, TM, UM, FM, PU FROM (SELECT
+				TABLESPACE_NAME, SUM(BYTES) BYTES FROM DBA_DATA_FILES GROUP BY
+				TABLESPACE_NAME) A, (SELECT TABLESPACE_NAME, SUM(BYTES) BYTES,
+				MAX(BYTES) LARGEST FROM DBA_FREE_SPACE GROUP BY TABLESPACE_NAME) B
+				WHERE A.TABLESPACE_NAME = B.TABLESPACE_NAME AND ROWNUM = 1 ORDER BY
+				((A.BYTES - B.BYTES) / A.BYTES) DESC; /*回收表空间数据文件*/ FOR B IN (SELECT
+				'ALTER DATABASE DATAFILE ''' || A.FILE_NAME || ''' RESIZE ' ||
+				ROUND(A.FILESIZE - (A.FILESIZE - C.HWMSIZE - 100) * 0.8) || 'M'
+				SQL_CONEXT, A.FILESIZE, C.HWMSIZE FROM (SELECT FILE_ID, FILE_NAME,
+				ROUND(BYTES / 1024 / 1024) FILESIZE FROM DBA_DATA_FILES) A, (SELECT
+				FILE_ID, ROUND(MAX(BLOCK_ID) * 8 / 1024) HWMSIZE FROM DBA_EXTENTS
+				GROUP BY FILE_ID) C WHERE A.FILE_ID = C.FILE_ID AND A.FILESIZE -
+				C.HWMSIZE > 100) LOOP EXECUTE IMMEDIATE B.SQL_CONEXT; END LOOP; END;
+			</code>
+		</p>
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script type="text/javascript">
+		var clipboard = new Clipboard('.btn');
+
+		clipboard.on('success', function(e) {
+			console.info('Action:', e.action);
+			console.info('Text:', e.text);
+			console.info('Trigger:', e.trigger);
+
+			e.clearSelection();
+		});
+
+		clipboard.on('error', function(e) {
+			console.error('Action:', e.action);
+			console.error('Trigger:', e.trigger);
+		});
+	</script>
+</body>
+</html>
