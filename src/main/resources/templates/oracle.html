@@ -19,24 +19,25 @@
 	<div class="container">
 		<div class="row">
 			<div class="card col px-0 m-2">
-				<a data-th-href="@{${'/oracle'}(page=1)}"><img
+				<a data-th-href="@{${'/oracle'}(html='oracle/html/ssbkj')}"><img
 					class="card-img-top" src="img/IMG_20171215_165036.jpg"
 					alt="Card image cap"></a>
 				<div class="card-body">
 					<h5 class="card-title display-5">
-						<a data-th-href="@{${'/oracle'}(page=1)}">Oracle收缩表空间</a>
+						<a data-th-href="@{${'/oracle'}(html='oracle/html/ssbkj')}">Oracle收缩表空间</a>
 					</h5>
 					<p class="card-text">当表空间太满的时候我们会需要用到收缩表空间。</p>
 				</div>
 			</div>
 			<div class="card col px-0 m-2">
-				<img class="card-img-top" src="img/IMG_20171215_165036.jpg"
-					alt="Card image cap">
+				<a data-th-href="@{${'/oracle'}(html='oracle/html/undo')}"><img
+					class="card-img-top" src="img/IMG_20171215_165036.jpg"
+					alt="Card image cap"></a>
 				<div class="card-body">
-					<h5 class="card-title">Card title</h5>
-					<p class="card-text">Some quick example text to build on the
-						card title and make up the bulk of the card's content.</p>
-					<a href="/oracle" class="btn btn-primary">Go somewhere</a>
+					<h5 class="card-title display-5">
+						<a data-th-href="@{${'/oracle'}(html='oracle/html/undo')}">Oracle闪回</a>
+					</h5>
+					<p class="card-text">在Oracle的Undo机制中，参数Undo_Retention扮演了“混淆者”的角色。</p>
 				</div>
 			</div>
 			<div class="card col px-0 m-2">
