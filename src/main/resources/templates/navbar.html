@@ -2,6 +2,46 @@
 <html>
 <head>
 <meta charset="utf-8">
+<!-- 心知天气 -->
+<script>
+	(function(T, h, i, n, k, P, a, g, e) {
+		g = function() {
+			P = h.createElement(i);
+			a = h.getElementsByTagName(i)[0];
+			P.src = k;
+			P.charset = "utf-8";
+			P.async = 1;
+			a.parentNode.insertBefore(P, a)
+		};
+		T["ThinkPageWeatherWidgetObject"] = n;
+		T[n] || (T[n] = function() {
+			(T[n].q = T[n].q || []).push(arguments)
+		});
+		T[n].l = +new Date();
+		if (T.attachEvent) {
+			T.attachEvent("onload", g)
+		} else {
+			T.addEventListener("load", g, false)
+		}
+	}(window, document, "script", "tpwidget",
+			"//widget.seniverse.com/widget/chameleon.js"))
+</script>
+<script>
+	tpwidget("init", {
+		"flavor" : "bubble",
+		"location" : "WX4FBXXFKE4F",
+		"geolocation" : "enabled",
+		"position" : "top-left",
+		"margin" : "10px 200px",
+		"language" : "zh-chs",
+		"unit" : "c",
+		"theme" : "chameleon",
+		"uid" : "U8D2EF9407",
+		"hash" : "6dcb722c0bd9429028a8295cebfc8784"
+	});
+	tpwidget("show");
+</script>
+<!-- 心知天气 -->
 <body>
 	<div class="container-fluid" align="center" hidden="">
 		<div class="col">
@@ -30,6 +70,10 @@
 							class="dropdown-item" href="/index">Index</a> <a
 							class="dropdown-item" href="/page">Page</a>
 					</div></li>
+				<!-- 心知天气 -->
+				<li class="nav-item"><div id="tp-weather-widget"
+						class="nav-link"></div></li>
+				<!-- 心知天气 -->
 			</ul>
 			<form class="form-inline my-2 my-lg-0" action="/">
 				<input class="form-control mr-sm-2" type="search"
@@ -39,4 +83,45 @@
 		</div>
 	</nav>
 </body>
+<!-- 心知天气 -->
+<script>
+	(function(T, h, i, n, k, P, a, g, e) {
+		g = function() {
+			P = h.createElement(i);
+			a = h.getElementsByTagName(i)[0];
+			P.src = k;
+			P.charset = "utf-8";
+			P.async = 1;
+			a.parentNode.insertBefore(P, a)
+		};
+		T["ThinkPageWeatherWidgetObject"] = n;
+		T[n] || (T[n] = function() {
+			(T[n].q = T[n].q || []).push(arguments)
+		});
+		T[n].l = +new Date();
+		if (T.attachEvent) {
+			T.attachEvent("onload", g)
+		} else {
+			T.addEventListener("load", g, false)
+		}
+	}(window, document, "script", "tpwidget",
+			"//widget.seniverse.com/widget/chameleon.js"))
+</script>
+<script>
+	tpwidget("init", {
+		"flavor" : "slim",
+		"location" : "WX4FBXXFKE4F",
+		"geolocation" : "enabled",
+		"language" : "auto",
+		"unit" : "c",
+		"theme" : "chameleon",
+		"container" : "tp-weather-widget",
+		"bubble" : "enabled",
+		"alarmType" : "badge",
+		"uid" : "U8D2EF9407",
+		"hash" : "df70f4f681d5fac7e39d9c12045558f9"
+	});
+	tpwidget("show");
+</script>
+<!-- 心知天气 -->
 </html>
