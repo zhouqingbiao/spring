@@ -34,7 +34,7 @@
 				UNDO_RETENTION;</code>
 		</p>
 		<div align="center">
-			<img alt="undo_01.jpg" src="oracle/img/undo_01.jpg">
+			<img alt="undo_01.jpg" src="img/oracle/undo_01.jpg">
 		</div>
 
 		<p class="text-primary">2.修改UNDO_RETENTION参数</p>
@@ -47,7 +47,7 @@
 				UNDO_RETENTION=604800 SCOPE=BOTH;</code>
 		</p>
 		<div align="center">
-			<img alt="undo_02.jpg" src="oracle/img/undo_02.jpg">
+			<img alt="undo_02.jpg" src="img/oracle/undo_02.jpg">
 		</div>
 
 		<p class="text-primary">3.闪回表</p>
@@ -55,9 +55,9 @@
 			data-clipboard-target="#code3">copy</button>
 		<p>
 			<!-- Target -->
-			<code class="text-success" id="code3">SELECT *
-  FROM SYSMANAGE.HZR_CS AS OF TIMESTAMP TO_TIMESTAMP('2018/01/31 10:00:00', 'YYYY/MM/DD HH24:MI:SS');
-			</code>
+			<code class="text-success" id="code3">SELECT * FROM
+				SYSMANAGE.HZR_CS AS OF TIMESTAMP TO_TIMESTAMP('2018/01/31 10:00:00',
+				'YYYY/MM/DD HH24:MI:SS'); </code>
 		</p>
 	</div>
 
