@@ -30,11 +30,18 @@
 				<textarea class="form-control" id="feedback" name="feedback"
 					placeholder="写下您的反馈和建议" rows="3"></textarea>
 			</div>
+			<div class="form-group">
+				<label for="img" class="text-info">图片（可选项，提供问题截图，最多4张！）</label> <input
+					class="form-control" id="img" name="img" type="file"
+					placeholder="写下您的反馈和建议"></input>
+			</div>
 			<button type="submit" class="btn btn-primary">发送反馈</button>
 		</form>
 	</div>
 	<span class="badge badge-danger position-absolute m-1"
-		data-th-text="${feedback}"></span>
+		data-th-text="${email}" id="email"></span>
+	<span class="badge badge-danger position-absolute m-1"
+		data-th-text="${feedback}" id="feedback"></span>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -53,13 +60,23 @@
 		crossorigin="anonymous"></script>
 	<script type="text/javascript">
 		$(function() {
-			var top = $("label[for='feedback']").offset().top;
-			var left = $("label[for='feedback']").offset().left;
-			var width = $("label[for='feedback']").width();
 
-			$("span").css({
-				"top" : top,
-				"left" : left + width
+			var topEmail = $("label[for='email']").offset().top;
+			var leftEmail = $("label[for='email']").offset().left;
+			var widthEmail = $("label[for='email']").width();
+
+			$("span[id='email']").css({
+				"top" : topEmail,
+				"left" : leftEmail + widthEmail
+			});
+
+			var topFeedback = $("label[for='feedback']").offset().top;
+			var leftFeedback = $("label[for='feedback']").offset().left;
+			var widthFeedback = $("label[for='feedback']").width();
+
+			$("span:[id='feedback']").css({
+				"top" : topFeedback,
+				"left" : leftFeedback + widthFeedback
 			});
 		});
 	</script>

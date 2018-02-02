@@ -25,7 +25,9 @@ public class FeedbackController {
 
 		MimeMessage mm = jms.createMimeMessage();
 
-		if (StringUtils.isEmpty(email)) {
+		if (StringUtils.isEmpty(email) && StringUtils.isEmpty(feedback)) {
+
+		} else if (StringUtils.isEmpty(email)) {
 			model.addAttribute("email", "写下您的电子邮件！");
 		} else if (StringUtils.isEmpty(feedback)) {
 			model.addAttribute("feedback", "写下您的反馈和建议！");
