@@ -30,9 +30,11 @@ public class IndexController {
 
 		// rows返回数据条数
 		int arg2 = 1;
+
 		long start = System.nanoTime();
 		model.addAttribute("index", jws.getData(arg0, arg1, arg2));
 		long end = System.nanoTime();
+
 		System.out.println((end - start) + "纳秒");
 		System.out.println((end - start) / 1000000 + "毫秒");
 		System.out.println((end - start) / 1000000000 + "秒");
