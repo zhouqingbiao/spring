@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<title>帮助和反馈</title>
+</head>
+<body>
+	<div data-th-replace="navbar :: html"></div>
+
+	<div class="container">
+		<form action="/feedback" method="post" class="m-1">
+			<div class="form-group">
+				<label for="email">电子邮箱</label> <input type="email"
+					class="form-control" id="email" name="email" placeholder="写下您的电子邮箱">
+				<small class="form-text text-muted">We'll never share your
+					email with anyone else.</small>
+			</div>
+			<div class="form-group">
+				<label for="feedback">反馈和建议</label>
+				<textarea class="form-control" id="feedback" name="feedback"
+					placeholder="写下您的反馈和建议" rows="3"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">发送反馈</button>
+		</form>
+	</div>
+	<span class="badge badge-danger position-absolute m-1"
+		data-th-text="${feedback}"></span>
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(function() {
+			var top = $("label[for='feedback']").offset().top;
+			var left = $("label[for='feedback']").offset().left;
+			var width = $("label[for='feedback']").width();
+
+			$("span").css({
+				"top" : top,
+				"left" : left + width
+			});
+		});
+	</script>
+</body>
+</html>
