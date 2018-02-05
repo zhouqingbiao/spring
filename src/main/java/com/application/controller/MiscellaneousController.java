@@ -2,16 +2,17 @@ package com.application.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class OracleController {
+public class MiscellaneousController {
 
-	@RequestMapping(value = "/oracle", method = { RequestMethod.GET })
-	public String oracleController(Model model, String html) {
+	@RequestMapping(value = "/miscellaneous", method = { RequestMethod.GET })
+	public String miscellaneousController(Model model, String html) {
 
-		html = null == html ? "oracle" : html;
+		html = StringUtils.isEmpty(html) ? "miscellaneous" : html;
 
 		return html;
 	}
