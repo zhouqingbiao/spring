@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<title>Oracle闪回</title>
+<body>
+	<div data-th-replace="navbar :: html"></div>
+
+	<div class="container">
+		<h1 class="display-4 text-center">Oracle闪回</h1>
+		<p class="lead">在Oracle的Undo机制中，参数Undo_Retention扮演了“混淆者”的角色。</p>
+		<p class="text-primary">1.首先查看下UNDO使用情况</p>
+		<p class="text-secondary">
+			UNDO_RETENTION以秒为单位；Undo_Retention是Oracle提供出的用于控制Undo过期数据保留的 <span
+				class="text-danger">“调节Tune”</span> 参数。 <span class="text-danger">注意：这里不是控制参数。</span>
+		</p>
+		<!-- Trigger -->
+		<button class="btn btn-outline-secondary btn-sm float-right"
+			data-clipboard-target="#code1">copy</button>
+		<p>
+			<!-- Target -->
+			<code class="text-success">SQL> </code>
+			<code class="text-success" id="code1">SHOW PARAMETER
+				UNDO_RETENTION;</code>
+		</p>
+		<div align="center">
+			<img alt="undo_01.jpg" src="img/miscellaneous/oracle/undo_01.jpg">
+		</div>
+
+		<p class="text-primary">2.修改UNDO_RETENTION参数</p>
+		<button class="btn btn-outline-secondary btn-sm float-right"
+			data-clipboard-target="#code2">copy</button>
+		<p>
+			<!-- Target -->
+			<code class="text-success">SQL> </code>
+			<code class="text-success" id="code2">ALTER SYSTEM SET
+				UNDO_RETENTION=604800 SCOPE=BOTH;</code>
+		</p>
+		<div align="center">
+			<img alt="undo_02.jpg" src="img/miscellaneous/oracle/undo_02.jpg">
+		</div>
+
+		<p class="text-primary">3.闪回表</p>
+		<button class="btn btn-outline-secondary btn-sm float-right"
+			data-clipboard-target="#code3">copy</button>
+		<p>
+			<!-- Target -->
+			<code class="text-success" id="code3">SELECT * FROM
+				SYSMANAGE.HZR_CS AS OF TIMESTAMP TO_TIMESTAMP('2018/01/31 10:00:00',
+				'YYYY/MM/DD HH24:MI:SS'); </code>
+		</p>
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script type="text/javascript">
+		var clipboard = new Clipboard('.btn');
+
+		clipboard.on('success', function(e) {
+			console.info('Action:', e.action);
+			console.info('Text:', e.text);
+			console.info('Trigger:', e.trigger);
+
+			e.clearSelection();
+		});
+
+		clipboard.on('error', function(e) {
+			console.error('Action:', e.action);
+			console.error('Trigger:', e.trigger);
+		});
+	</script>
+</body>
+</html>

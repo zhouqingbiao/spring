@@ -12,53 +12,50 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>Oracle闪回</title>
+<title>sed</title>
 <body>
 	<div data-th-replace="navbar :: html"></div>
 
 	<div class="container">
-		<h1 class="display-4 text-center">Oracle闪回</h1>
-		<p class="lead">在Oracle的Undo机制中，参数Undo_Retention扮演了“混淆者”的角色。</p>
-		<p class="text-primary">1.首先查看下UNDO使用情况</p>
-		<p class="text-secondary">
-			UNDO_RETENTION以秒为单位；Undo_Retention是Oracle提供出的用于控制Undo过期数据保留的 <span
-				class="text-danger">“调节Tune”</span> 参数。 <span class="text-danger">注意：这里不是控制参数。</span>
-		</p>
+		<h1 class="display-4 text-center">sed</h1>
+		<p class="lead">sed命令不太懂，也是网络上寻找的。</p>
+		<p class="text-primary">1.直接上命令，命令时截取2018-01-28的第一条信息开始至2018-01-31的第一条信息。</p>
 		<!-- Trigger -->
 		<button class="btn btn-outline-secondary btn-sm float-right"
 			data-clipboard-target="#code1">copy</button>
 		<p>
 			<!-- Target -->
-			<code class="text-success">SQL> </code>
-			<code class="text-success" id="code1">SHOW PARAMETER
-				UNDO_RETENTION;</code>
+			<code class="text-success" id="code1">sed -n
+				'/2018-01-28/,/2018-01-31/p'
+				/opt/apache-tomcat-6.0.44/logs/catalina.out > /12.log</code>
 		</p>
 		<div align="center">
-			<img alt="undo_01.jpg" src="img/miscellaneous/undo_01.jpg">
+			<img src="img/miscellaneous/linux/sed_01.jpg">
 		</div>
 
-		<p class="text-primary">2.修改UNDO_RETENTION参数</p>
+		<p class="text-primary">2.查看12.log的最前十行。</p>
+		<!-- Trigger -->
 		<button class="btn btn-outline-secondary btn-sm float-right"
 			data-clipboard-target="#code2">copy</button>
 		<p>
 			<!-- Target -->
-			<code class="text-success">SQL> </code>
-			<code class="text-success" id="code2">ALTER SYSTEM SET
-				UNDO_RETENTION=604800 SCOPE=BOTH;</code>
+			<code class="text-success" id="code2">head -n 10 /12.log</code>
 		</p>
 		<div align="center">
-			<img alt="undo_02.jpg" src="img/miscellaneous/undo_02.jpg">
+			<img src="img/miscellaneous/linux/sed_02.jpg">
 		</div>
 
-		<p class="text-primary">3.闪回表</p>
+		<p class="text-primary">3.查看12.log的最后十行。</p>
+		<!-- Trigger -->
 		<button class="btn btn-outline-secondary btn-sm float-right"
 			data-clipboard-target="#code3">copy</button>
 		<p>
 			<!-- Target -->
-			<code class="text-success" id="code3">SELECT * FROM
-				SYSMANAGE.HZR_CS AS OF TIMESTAMP TO_TIMESTAMP('2018/01/31 10:00:00',
-				'YYYY/MM/DD HH24:MI:SS'); </code>
+			<code class="text-success" id="code3">tail -n 10 /12.log</code>
 		</p>
+		<div align="center">
+			<img src="img/miscellaneous/linux/sed_03.jpg">
+		</div>
 	</div>
 
 	<!-- Optional JavaScript -->
