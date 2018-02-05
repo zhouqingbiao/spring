@@ -31,11 +31,21 @@
 					placeholder="写下您的反馈和建议" rows="3"></textarea>
 			</div>
 			<div class="form-group">
-				<label for="img" class="text-info">图片（可选项，提供问题截图，最多4张！）</label> <input
-					class="form-control" id="img" name="img" type="file"
-					placeholder="写下您的反馈和建议"></input>
+				<label for="file" class="text-info">图片（可选项，提供问题截图，最多4张！）</label>
 			</div>
-			<button type="submit" class="btn btn-primary">发送反馈</button>
+			<div class="form-check form-check-inline">
+				<input class="form-control-file form-check-input"
+					formenctype="multipart/form-data" id="file" name="file" type="file"></input>
+				<input class="form-control-file form-check-input"
+					formenctype="multipart/form-data" id="file" name="file" type="file"></input>
+				<input class="form-control-file form-check-input"
+					formenctype="multipart/form-data" id="file" name="file" type="file"></input>
+				<input class="form-control-file form-check-input"
+					formenctype="multipart/form-data" id="file" name="file" type="file"></input>
+			</div>
+			<div class="form-group mt-3">
+				<button type="submit" class="btn btn-primary">发送反馈</button>
+			</div>
 		</form>
 	</div>
 	<span class="badge badge-danger position-absolute m-1"
