@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<title>Linux系统架构与目录解析</title>
+<body>
+	<div data-th-replace="navbar :: html"></div>
+
+	<div class="container">
+		<h1 class="display-4 text-center">Linux系统架构与目录解析</h1>
+		<p class="lead text-success" align="center">内容简介</p>
+		<p class="text-primary">这是一本剖析Linux常用目录及文件的专著，它打破以往图书偏重介绍命令语句的惯性思维，以系统目录架构为主体，并设计查询功能，以协助读者建立对Linux操作系统的整体观念，而不再仅限于对某些服务或设置的片面了解。</p>
+		<p class="text-primary">本书提供了完整的系统启动流程图，为读者说明各个目录与文件在开机流程中的作用。以Linux
+			kernel为基础，列出基础且必要的目录结构，可通用于以Linux kernel为核心的各类操作系统。对于修改系统、设定服务，或是设定X
+			Window等必须熟悉的配置文件，以专章篇幅做详细的介绍。依各类应用程序在执行时所须加载的函数库文件，以简明易懂的方式说明其规则或标准。完全解析“主目录”的功能，延伸用户登录的流程及X
+			Windows的操作功能。充分掌握日志文件与暂存信息，引导读者做好“系统管理”的核心工作。以功能分类的方式，详列本书中的各项目录及文件的索引，方便读者查询与使用。</p>
+
+		<p align="center">
+			<span>PDF：</span> <a class="text-success"
+				href="pdf/Linux系统架构与目录解析.pdf">Linux系统架构与目录解析</a>
+		</p>
+
+		<p align="center">
+			<span>百度网盘：</span> <a class="text-danger"
+				href="https://pan.baidu.com/s/1eT7Q2ye">https://pan.baidu.com/s/1eT7Q2ye</a>
+		</p>
+
+		<div align="center">
+			<embed src="pdf/Linux系统架构与目录解析.pdf"
+				style="width: 800px; height: 800px;">
+		</div>
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script type="text/javascript">
+		var clipboard = new Clipboard('.btn');
+
+		clipboard.on('success', function(e) {
+			console.info('Action:', e.action);
+			console.info('Text:', e.text);
+			console.info('Trigger:', e.trigger);
+
+			e.clearSelection();
+		});
+
+		clipboard.on('error', function(e) {
+			console.error('Action:', e.action);
+			console.error('Trigger:', e.trigger);
+		});
+	</script>
+</body>
+</html>
