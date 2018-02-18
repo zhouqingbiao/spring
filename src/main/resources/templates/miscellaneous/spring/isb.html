@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<title>Installing Spring Boot applications</title>
+<body>
+	<div data-th-replace="navbar :: html"></div>
+
+	<div class="container">
+		<h1 class="display-4 text-center">Installing Spring Boot
+			applications</h1>
+		<p align="center">
+			<span>HTML：</span> <a class="text-success"
+				href="https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#deployment-install">Installing
+				Spring Boot applications</a>
+		</p>
+
+		<p class="h3">第一步</p>
+		<p>
+			<code>$ sudo ln -s /var/myapp/myapp.jar /etc/init.d/myapp</code>
+		</p>
+		<p class="h3">第二步</p>
+		<p>
+			<code>$ chmod 500 your-app.jar</code>
+		</p>
+		<p class="h3">第三步</p>
+		<p>
+			<code> $ service myapp</code>
+			<code class="text-success">start stop restart status</code>
+		</p>
+		<p class="h3">结果</p>
+		<p class="list-group">
+			<code># service spring restart</code>
+			<code class="text-success">Stopped [17531]</code>
+			<code class="text-success">Started [17623]</code>
+		</p>
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script type="text/javascript">
+		var clipboard = new Clipboard('.btn');
+
+		clipboard.on('success', function(e) {
+			console.info('Action:', e.action);
+			console.info('Text:', e.text);
+			console.info('Trigger:', e.trigger);
+
+			e.clearSelection();
+		});
+
+		clipboard.on('error', function(e) {
+			console.error('Action:', e.action);
+			console.error('Trigger:', e.trigger);
+		});
+	</script>
+</body>
+</html>
