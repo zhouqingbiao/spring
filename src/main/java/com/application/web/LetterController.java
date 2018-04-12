@@ -1,4 +1,4 @@
-package com.application.controller;
+package com.application.web;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.application.entity.Letter;
+import com.application.domain.Letter;
 
 @Controller
 public class LetterController {

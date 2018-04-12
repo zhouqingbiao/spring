@@ -1,4 +1,4 @@
-package com.application.controller;
+package com.application.web;
 
 import javax.servlet.http.HttpServletRequest;
 

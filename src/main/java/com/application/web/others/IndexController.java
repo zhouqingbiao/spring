@@ -1,4 +1,4 @@
-package com.application.controller.others;
+package com.application.web.others;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

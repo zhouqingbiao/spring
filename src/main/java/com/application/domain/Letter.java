@@ -1,4 +1,4 @@
-package com.application.entity;
+package com.application.domain;
 
 public class Letter {
 	private int id;
