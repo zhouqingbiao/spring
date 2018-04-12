@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class SlashController {
 
 	@RequestMapping(value = "/", method = { RequestMethod.GET })
-	public String Controller(Model model, HttpServletRequest request) {
+	public String controller(Model model, HttpServletRequest request) {
 
 		// IP
 		model.addAttribute("RA", request.getRemoteAddr());
